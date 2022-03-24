@@ -100,10 +100,11 @@ export default {
       let arrCount = []
       let itemContainer = this.itemContainer
       let arrCom = this.arrConfig(config)
- 
+
       //注册    
       arrCom.forEach(element => {
         layout.registerComponent(element, (container, state) => {
+
           this.$bus.$emit('transmit', container, state)
           itemContainer.push(container)
           return container

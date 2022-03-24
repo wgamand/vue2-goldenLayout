@@ -39,10 +39,8 @@ export default {
     transmit() {
       this.$bus.$on('transmit', (container, state) => {
         if (!this.$refs.other || state.text !== 'Other') return
-        
         let otherCopy = this.$refs.other.cloneNode(true)
         container.getElement().append(otherCopy)
-    
 
         let child = otherCopy.childNodes
         for (let i = 0; i < child.length; i++) {
