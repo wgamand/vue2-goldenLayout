@@ -1,6 +1,6 @@
 {
-  "name": "vue-golden-zhaoaijing",
-  "version": "0.1.1",
+  "name": "vue-goldenlayout",
+  "version": "1.2.2",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -24,8 +24,6 @@
     "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "electron": "6.0.0",
-    "vue-cli-plugin-electron-builder": "^1.4.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-unit-jest": "~4.5.0",
@@ -34,8 +32,10 @@
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
     "compression-webpack-plugin": "^1.1.12",
+    "electron": "6.0.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "vue-cli-plugin-electron-builder": "^1.4.0",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {

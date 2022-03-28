@@ -18,8 +18,8 @@
         <td>9</td>
       </tr>
     </table>
-    <button id="btn" @click="handleClick" >@click</button>
-    <button onclick="alert('onclick')" style="marginLeft: 15px">onclick</button>
+    <button id="btn" ref="btn" @click="handleClick" >@click</button>
+    <button  onclick="alert('onclick')" style="marginLeft: 15px">onclick</button>
     <button onclick="this.handleClick" style="marginLeft: 15px">onclick</button>
     
   </div>
@@ -49,8 +49,14 @@ export default {
           }
         }
       })
-    }
+
+      let obj = {name: 'test'}
+      this.$refs.btn.click()      
+      console.log(obj)
+    },
+    
   },
+  
 }
 </script>
 <style>

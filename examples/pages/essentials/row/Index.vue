@@ -2,7 +2,7 @@
   <div id="wrapper">
     <vue-golden-layout :config="config">
       <!-- 插槽 -->
-      <other></other>
+      <other ref="other"></other>
       <assembly></assembly>
       <another></another>
     </vue-golden-layout>
