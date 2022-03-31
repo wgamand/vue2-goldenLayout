@@ -2,6 +2,7 @@
   <vue-golden-layout
   :config="config"
   :reorder="reorder"
+  :showTop="true"
   :newElement="newElement">
   </vue-golden-layout>
 </template>
@@ -13,6 +14,7 @@ export default {
     return {
       reorder: 'true',
       config: {
+        mainNode: 'el-main',
         type: 'column',
         content: [{
           type: 'column',

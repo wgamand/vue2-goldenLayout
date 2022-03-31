@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       config : {
+        mainNode: 'el-main',
         settings: {
           selectionEnabled: true,
           popoutWholeStack: true,

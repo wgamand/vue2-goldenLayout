@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="top">
+    <div class="top" v-if="showTop">
       <p class="topP">ESSENTIALS&nbsp;::&nbsp;&nbsp;{{ essentials }}</p>
 
       <div class="btnorp">
@@ -35,20 +35,50 @@
 <script>
 import GoldenLayout from "golden-layout";
 export default {
+  name: 'VueGoldenLayout',
   // 传入数据配置数据、组件名及内部组件
-  props: [
-    "config",
-    "newItemConfig",
-    "addItem",
-    "scroll",
-    "saving",
-    "css",
-    "synced",
-    "reorder",
-    "newElement",
-    "extend",
-    "close"
-  ],
+  props: {
+    config: {
+      required: true,
+    },
+    newItemConfig: {
+      required: false,
+    },
+    addItem: {
+      required: false,
+    },
+    scroll: {
+      required: false,
+    },
+    saving: {
+      required: false,
+    },
+    css: {
+      required: false,
+    },
+    synced: {
+      required: false,
+    },
+    reorder: {
+      required: false,
+    },
+    newElement: {
+      required: false,
+    },
+    extend: {
+      required: false,
+    },
+    close: {
+      required: false,
+    },
+    mainNode: {
+      required: false,
+    },
+    showTop: {
+      default: false,
+      required: false,
+    },
+  },
   data() {
     return {
       layout: null,
@@ -63,10 +93,13 @@ export default {
       essentials: '',
       layoutA: '',
       layoutB: '',
+      nodeBody: '',
     }
   },
   mounted() {
-    this.essentials = this.$route.path.substring(1)
+    if (this.$route) {
+      this.essentials = this.$route.path.substring(1)
+    }
     if (this.config) {
       let layout = this.createLayout(this.config)
       layout.init()
@@ -95,8 +128,10 @@ export default {
     // 初始化
     createLayout(config) {
       if (!config) return
+      let node = this.config.mainNode
+      let nodeBody = this.nodebody = node ? document.getElementsByClassName([node]) : ''
 
-      let layout = new GoldenLayout(config, document.getElementsByClassName('el-main'));
+      let layout = nodeBody ? new GoldenLayout(config, nodeBody) : new GoldenLayout(config)
       let arrCount = []
       let itemContainer = this.itemContainer
       let arrCom = this.arrConfig(config)
@@ -140,11 +175,10 @@ export default {
     },
     // 滚动条
     showScroll() {
-      if (this.scroll) {
-        let lm = document.getElementsByClassName('lm_content')
-        for (let i = 0; i < lm.length; i++) {
-          lm[i].style.overflow = "scroll"
-        }
+      if (!this.scroll) return
+      let lm = document.getElementsByClassName('lm_content')
+      for (let i = 0; i < lm.length; i++) {
+        lm[i].style.overflow = "scroll"
       }
     },
     // 保存状态
@@ -152,14 +186,14 @@ export default {
       let savedState = this.savedState = JSON.parse(localStorage.getItem('savedState'))
       let myLayout = this.myLayout = this.layout
       if (savedState !== null) {
-        myLayout = new GoldenLayout(savedState, document.getElementsByClassName('el-main'))
+        myLayout = this.nodebody ? new GoldenLayout(savedState, this.nodebody) : new GoldenLayout(savedState)
         this.layout.destroy()
       }
-      
+
       myLayout.on('stateChanged', () => {
         localStorage.setItem('savedState', JSON.stringify(myLayout.toConfig()))
       })
-      
+
       this.arrCom.forEach(element => {
         myLayout.registerComponent(element, (container, state) => {
           this.$bus.$emit('transmit', container, state)
@@ -186,7 +220,7 @@ export default {
       let createLayout = function (config, arrCom, con) {
         let syncLayout = new GoldenLayout(config, document.getElementById(con))
         layout.destroy()
-         
+
         let insetFunction = function (container, state,) {
           _this.$nextTick(() => {
             _this.$bus.$emit('transmit', container, state)

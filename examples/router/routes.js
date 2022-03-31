@@ -42,11 +42,7 @@ export const routes = [
   {
     path: '/conditional-closing',
     component: () => import('../pages/customFunctionality/ConditionalClosing')
-  },
-  {
-    path: '/test',
-    component: () => import('../pages/addItems/test')
-  },
+  }
 
 ]
 

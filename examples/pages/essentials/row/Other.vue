@@ -51,8 +51,8 @@ export default {
       })
 
       let obj = {name: 'test'}
-      this.$refs.btn.click()      
-      console.log(obj)
+      // this.$refs.btn.click()      
+  
     },
     
   },

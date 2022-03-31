@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <vue-golden-layout :config="config">
+    <vue-golden-layout :config="config" :showTop="true">
       <!-- 插槽 -->
       <other ref="other"></other>
       <assembly></assembly>
@@ -20,6 +20,7 @@ export default {
     return {
       // 配置
       config: {
+        mainNode: 'el-main',
         settings: {
           selectionEnabled: true,
           popoutWholeStack: true,

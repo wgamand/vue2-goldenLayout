@@ -2,6 +2,7 @@
   <vue-golden-layout
   :config="config"
   :saving="saving"
+  :showTop="true"
   >
   <input-box></input-box>
   </vue-golden-layout>
@@ -16,6 +17,7 @@ export default {
     return {
       saving: true,
       config: {
+        mainNode: 'el-main',
         content: [
           {
             type: 'row',

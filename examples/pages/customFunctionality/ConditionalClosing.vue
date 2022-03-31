@@ -2,6 +2,7 @@
   <vue-golden-layout
   :config="config"
   :close="close"
+  :showTop="true"
   ></vue-golden-layout>
 </template>
 
@@ -12,6 +13,7 @@ export default {
     return {
       close: true,
       config: {
+        mainNode: 'el-main',
         content: [{
           type: 'row',
           content: [{

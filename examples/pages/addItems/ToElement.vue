@@ -4,6 +4,7 @@
       :config="config"
       :newItemConfig="newItemConfig"
       :addItem="addItem"
+      :showTop="true"
     >
       <add></add>
       <other></other>
@@ -21,6 +22,7 @@ export default {
     return {
       addItem: true,
       config: {
+        mainNode: 'el-main',
         settings: {
           selectionEnabled: true,
           popoutWholeStack: true,

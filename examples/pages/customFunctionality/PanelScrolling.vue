@@ -2,6 +2,7 @@
   <vue-golden-layout
   :config="config"
   :scroll="scroll"
+  :showTop="true"
   > 
   <another></another>
   </vue-golden-layout>
@@ -16,6 +17,7 @@ export default {
     return {
       scroll: true,
       config: {
+        mainNode: 'el-main',
         content: [
           {
             type: "row",

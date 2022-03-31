@@ -3,6 +3,8 @@
     <vue-golden-layout
     :config="config"
     :synced="synced"
+    :showTop="true"
+
     >
     <test-table></test-table>
     </vue-golden-layout>
@@ -19,6 +21,7 @@ export default {
       synced: true,
       wrapp: '',
       config: {
+        mainNode: 'el-main',
         content: [{
           type: 'row',
           content: [{

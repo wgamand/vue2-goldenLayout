@@ -1,6 +1,7 @@
 <template>
   <vue-golden-layout
     :config="config"
+    :showTop="true"
   ></vue-golden-layout>
 </template>
 
@@ -10,6 +11,7 @@ export default {
   data() {
     return {
       config: {
+        mainNode: 'el-main',
         content : [
           {
             type: 'column',
