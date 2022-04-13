@@ -64,24 +64,7 @@
 </template>
 <script>
 export default {
-  name: 'Another',
-  data() {
-    return {
-    }
-  },
-  mounted() {
-    this.transmit()
-  },
-  methods: {
-    transmit() {
-      this.$bus.$on('transmit', (container, state) => {
-        if(!this.$refs.another || state.text !== 'Another') return
-      
-        let copyAnother = this.$refs.another.cloneNode(true)
-        container.getElement().append(copyAnother)
-      })
-    }
-  }
+  name: 'Another'
 }
 </script>
 <style>

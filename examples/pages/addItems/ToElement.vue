@@ -41,12 +41,12 @@ export default {
                   {
                     type: "component",
                     componentName: "Component2",
-                    componentState: { text: 'Add' }
+                    componentState: { node: 'add' }
                   },
                   {
                     type: "component",
                     componentName: "Component3",
-                    componentState: { text: 'Other' }
+                    componentState: { node: 'other' }
                   },
                 ],
               },
@@ -57,7 +57,7 @@ export default {
       newItemConfig: {
         type: "component",
         componentName: "NewComponent",
-        componentState: { text: 'Add' }
+        componentState: { node: 'add' }
       },
     };
   },

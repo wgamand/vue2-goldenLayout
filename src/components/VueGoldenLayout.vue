@@ -11,11 +11,9 @@
         </div>
       </div>
 
-      <div class="chooseColor" v-if="extend">
-        <div
-          id="selectedColor"
-          style="display: none; width: 10px; height: 10px; background: pink; float: left; margin: 5px 5px 0 0 "
-        ></div>
+      <div class="chooseColor" v-if="spread">
+        <div id="selectedColor"
+          style="display: none; width: 10px; height: 10px; background: pink; float: left; margin: 5px 5px 0 0 "></div>
         <ul id="chooseUl">
           <li style="background: #014FA1"></li>
           <li style="background: #1D84BD"></li>
@@ -28,7 +26,7 @@
 
     <div class="main" v-show="false">
       <slot></slot>
-    </div>
+    </div>  
   </div>
 </template>
 
@@ -65,7 +63,7 @@ export default {
     newElement: {
       required: false,
     },
-    extend: {
+    spread: {
       required: false,
     },
     close: {
@@ -82,9 +80,9 @@ export default {
   data() {
     return {
       layout: null,
+      slots: this.$slots.default,
       oldContent: '',
       arrCom: [],
-      arrCount: [],
       savedState: null,
       myLayout: '',
       itemContainer: [],
@@ -110,6 +108,7 @@ export default {
     this.programmaticReorder(this.newElement, this.config)
   },
   methods: {
+    // 返回组件名
     arrConfig(config) {
       let minify = this.minify = GoldenLayout.minifyConfig(config)
       let arrCom = []
@@ -125,33 +124,45 @@ export default {
       this.arrCom = arrCom
       return arrCom
     },
+    // 插槽传递内部组件
+    handleInComponents(container, state) {
+      if (!this.slots) {
+        container.getElement().html(state.text)
+        return
+      }
+      if (this.$bus._events.transmit) {
+        this.$bus.$emit('transmit', container, state)
+      } else {
+        this.slots.forEach(e => {
+          let sname = e.componentOptions.tag
+          if (state.node === sname) {
+            container.getElement().append(e.elm)
+          }
+        })
+      }
+    },
     // 初始化
     createLayout(config) {
       if (!config) return
+
       let node = this.config.mainNode
       let nodeBody = this.nodebody = node ? document.getElementsByClassName([node]) : ''
-
+      // 注册
       let layout = nodeBody ? new GoldenLayout(config, nodeBody) : new GoldenLayout(config)
-      let arrCount = []
       let itemContainer = this.itemContainer
       let arrCom = this.arrConfig(config)
 
-      //注册    
       arrCom.forEach(element => {
         layout.registerComponent(element, (container, state) => {
-
-          this.$bus.$emit('transmit', container, state)
+          this.handleInComponents(container, state)
           itemContainer.push(container)
-          return container
         })
-      });
-
+      })
       //运行方法
       this.css ? this.configuredCss(layout) : ''
-      this.extend ? this.extendingHeader(layout) : ''
+      this.spread ? this.extendingHeader(layout) : ''
       this.close ? this.conditionalClosing(layout) : ''
 
-      this.arrCount = arrCount
       this.layout = layout
       return layout
     },
@@ -159,12 +170,11 @@ export default {
     addLayout(myLayout) {
       let newComName = this.newItemConfig.componentName
       let differChar = myLayout._components[newComName]
-      let ComFunction = (container, state) => {
-        this.$bus.$emit('transmit', container, state)
-      }
 
       if (!differChar) {
-        myLayout.registerComponent(newComName, ComFunction);
+        myLayout.registerComponent(newComName, (container, state) => {
+          this.handleInComponents(container, state)
+        })
         myLayout.root.contentItems[0].addChild(this.newItemConfig)
       } else {
         myLayout.root.contentItems[0].addChild(this.newItemConfig)
@@ -196,7 +206,7 @@ export default {
 
       this.arrCom.forEach(element => {
         myLayout.registerComponent(element, (container, state) => {
-          this.$bus.$emit('transmit', container, state)
+          this.handleInComponents(container, state)
         })
       })
       myLayout.init()
@@ -221,13 +231,10 @@ export default {
         let syncLayout = new GoldenLayout(config, document.getElementById(con))
         layout.destroy()
 
-        let insetFunction = function (container, state,) {
-          _this.$nextTick(() => {
-            _this.$bus.$emit('transmit', container, state)
-          })
-        }
         arrCom.forEach(com => {
-          syncLayout.registerComponent(com, insetFunction)
+          syncLayout.registerComponent(com, (container, state) => {
+            _this.handleInComponents(container, state)
+          })
         })
         syncLayout.init()
         return syncLayout
@@ -360,6 +367,7 @@ export default {
   destroyed() {
     this.layout.destroy()
     this.myLayout ? this.myLayout.destroy() : ''
+    localStorage.removeItem('savedState')
     if (this.layoutA) {
       this.layoutA.destroy()
       this.layoutB.destroy()

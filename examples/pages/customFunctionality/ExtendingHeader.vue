@@ -1,7 +1,7 @@
 <template>
   <vue-golden-layout
   :config="config"
-  :extend="extend"
+  :spread="spread"
   :showTop="true"
   >
   </vue-golden-layout>
@@ -12,7 +12,7 @@ export default {
   name: 'ExtendingHeader',
   data() {
     return {
-      extend: true,
+      spread: true,
       config: {
         mainNode: 'el-main',
         content: [{

@@ -25,7 +25,7 @@ export default {
               {
                 type: 'component',
                 componentName: 'ComponentA',
-                componentState: { text: 'input-box'}
+                componentState: { node: 'input-box'}
               },
               {
                 type: 'column',
@@ -37,7 +37,7 @@ export default {
                   {
                     type: 'component',
                     componentName: 'ComponentC',
-                    componentState: { text: 'input-box'}
+                    componentState: { node: 'input-box'}
                   }
                 ]
               }

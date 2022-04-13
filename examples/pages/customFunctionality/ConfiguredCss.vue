@@ -44,6 +44,6 @@ export default {
 </script>
 <style>
   .highlight, .highlight *{
-  background: orange !important;
+  background: orange;
 }
 </style>

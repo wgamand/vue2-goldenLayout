@@ -25,7 +25,7 @@ export default {
               {
                 type: "component",
                 componentName: "ComponentA",
-                componentState: { text: "Another" },
+                componentState: { node: "another" },
               },
               {
                 type: "column",

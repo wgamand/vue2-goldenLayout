@@ -4,7 +4,6 @@
     :config="config"
     :synced="synced"
     :showTop="true"
-
     >
     <test-table></test-table>
     </vue-golden-layout>
@@ -30,13 +29,13 @@ export default {
             content: [{
               type: 'component',
               componentName: 'example1',
-              componentState: { text: 'test-table'},
+              componentState: { node: 'test-table'},
               title: 'Component 1'
             },
             {
               type: 'component',
               componentName: 'example2',
-              componentState: { text: 'test-table'},
+              componentState: { node: 'test-table'},
               title: 'Component 2'
             }]
           },
@@ -45,12 +44,12 @@ export default {
             content: [{
               type: 'component',
               componentName: 'testComponent1',
-              componentState: { text: 'test-table'}
+              componentState: { node: 'test-table'}
             },
             {
               type: 'component',
               componentName: 'testComponent2',
-              componentState: { text: 'test-table'}
+              componentState: { node: 'test-table'}
             }]
           }
           ]

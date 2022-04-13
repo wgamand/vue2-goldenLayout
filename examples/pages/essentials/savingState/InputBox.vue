@@ -7,6 +7,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'InputBox',
   data() {
@@ -22,32 +23,6 @@ export default {
       this.message = e.target.value
       console.log(e.target.value)
     },
-    transmit() {
-      this.$bus.$on('transmit', (container, state) => {
-        if (!this.$refs.box || state.text !== 'input-box') return
-        let inputCopy = this.$refs.box.cloneNode(true)
-        container.getElement().append(inputCopy)
-
-        let a = inputCopy.children
-        for (let i = 0; i < inputCopy.children.length; i++) {
-          if (inputCopy.children[i].id === 'btn') {
-            inputCopy.children[i].onclick = this.handleClick
-          }
-          else if (inputCopy.children[i].id === 'input') {
-            inputCopy.children[i].addEventListener("change", (e) => {
-              this.message = e.target.value
-              console.log(this.message)
-            })
-
-          }
-        }
-    
-      })
-
-    },
-  },
-  mounted() {
-    this.transmit()
   }
 }
 </script>

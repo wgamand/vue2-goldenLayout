@@ -1,8 +1,8 @@
 <template>
   <div id="wrapper">
-    <vue-golden-layout :config="config" :showTop="true">
+    <vue-golden-layout :config="config" :showTop="true" :node="node">
       <!-- 插槽 -->
-      <other ref="other"></other>
+      <other></other>
       <assembly></assembly>
       <another></another>
     </vue-golden-layout>
@@ -18,6 +18,7 @@ export default {
   name: "Row",
   data() {
     return {
+      node: '',
       // 配置
       config: {
         mainNode: 'el-main',
@@ -37,12 +38,12 @@ export default {
                   {
                     type: "component",
                     componentName: "ComponentA",
-                    componentState: { text: 'Other' }
+                    componentState: { node: 'other' }
                   },
                   {
                     type: "component",
                     componentName: "ComponentB",
-                    componentState: { text: 'Another' }
+                    componentState: { node: 'another' }
                   },
                 ],
               },
@@ -52,12 +53,12 @@ export default {
                   {
                     type: "component",
                     componentName: "ComponentC",
-                    componentState: { text: 'Assembly' }
+                    componentState: { node: 'assembly' }
                   },
                   {
                     type: "component",
                     componentName: "ComponentD",
-                    componentState: { text: 'Other' }
+                    componentState: { node: 'other' }
                   },
                 ],
               },
