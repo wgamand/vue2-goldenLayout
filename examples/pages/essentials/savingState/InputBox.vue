@@ -1,8 +1,8 @@
 <template>
   <div ref="box" id="box"> 
-    <input id="input" type="text" :value="message" @change="handleChange" />
+    <input  type="text" :value="message" @change="handleChange" />
     <p id="p">输出: {{ message }}</p>
-    <button id="btn" v-on:click="handleClick">click</button>
+    <button id="btn" @click="handleClick">click</button>
   </div>
 </template>
 

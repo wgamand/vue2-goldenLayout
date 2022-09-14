@@ -2,9 +2,10 @@
   <vue-golden-layout
   :config="config"
   :saving="saving"
-  :showTop="true"
   >
-  <input-box></input-box>
+  <div v-for="item in items" :key="item.id">
+    <input-box></input-box>
+  </div>
   </vue-golden-layout>
 </template>
 
@@ -16,6 +17,7 @@ export default {
   data() {
     return {
       saving: true,
+      items: [{id:1}, {id:3}],
       config: {
         mainNode: 'el-main',
         content: [
@@ -25,7 +27,7 @@ export default {
               {
                 type: 'component',
                 componentName: 'ComponentA',
-                componentState: { node: 'input-box'}
+                componentState: { key: 1 }
               },
               {
                 type: 'column',
@@ -37,7 +39,7 @@ export default {
                   {
                     type: 'component',
                     componentName: 'ComponentC',
-                    componentState: { node: 'input-box'}
+                    componentState: { key: 3 }
                   }
                 ]
               }
@@ -46,7 +48,7 @@ export default {
         ]
       }
     }
-  },
+  }
 }
 </script>
 

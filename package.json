@@ -1,5 +1,5 @@
 {
-  "name": "golden-layout-zaj",
+  "name": "vue2-golden-layout",
   "version": "0.0.1",
   "private": false,
   "scripts": {
@@ -18,7 +18,9 @@
     "golden-layout": "1.5.9",
     "jquery": "^3.6.0",
     "vue": "^2.6.11",
-    "vue-router": "^3.5.3"
+    "vue-cloneya": "^1.0.14",
+    "vue-router": "^3.5.3",
+    "vue-splitpane": "^1.0.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -83,5 +85,13 @@
     "example": "examples",
     "test": "tests"
   },
-  "author": ""
+ 
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wgamand/vue2-goldenLayout1"
+  },
+  "author": "zhaoaijing",
+  "bugs": {
+    "url": "https://github.com/wgamand/vue2-goldenLayout1/issues"
+  }
 }

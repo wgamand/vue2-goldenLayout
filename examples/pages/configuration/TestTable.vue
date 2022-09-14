@@ -20,7 +20,7 @@
   </div>
 </template>
 
-<script>import { conditionalExpression } from "@babel/types"
+<script>
 
 export default {
   name: 'TestTable',
@@ -34,26 +34,15 @@ export default {
   },
   mounted() {
     this.highLight()
-    console.log(this)
   },
   methods: {
-    handleClick() {
-      console.log('handle')
-    },
     highLight() {
-      this.$bus.$on('transmit', (container, state) => {
-        if (!this.$refs.table || state.node !== 'test-table') return
-        let tableCopy = this.$refs.table.cloneNode(true)
-        container.getElement().append(tableCopy)
-
-        let doc = tableCopy.querySelectorAll('td')
+        let doc = document.querySelectorAll('td')
         for (let i = 0; i < doc.length; i++) {
           doc[i].onclick = () => {
             doc[i].className = doc[i].className === 'active' ? '' : 'active'
           }
         }
-      })
-  
     }
   }
 }

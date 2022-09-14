@@ -3,7 +3,6 @@
     <vue-golden-layout
     :config="config"
     :css="css"
-    :showTop="true"
     >
     </vue-golden-layout>
   </div>

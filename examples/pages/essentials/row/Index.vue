@@ -1,74 +1,80 @@
 <template>
   <div id="wrapper">
-    <vue-golden-layout :config="config" :showTop="true" :node="node">
+    <div style="position: absolute; top: 15px; left: 685px;">
+      <button @click="change">切换组件</button>
+    </div>
+    <vue-golden-layout ref="vueGolden" :config="config">
       <!-- 插槽 -->
-      <other></other>
-      <assembly></assembly>
-      <another></another>
+      <div v-for="item in items" :key="item.id">
+        <div>组件：{{ `Component${item.name} ` }}</div>
+        <p>内容: {{ item.name }}</p>
+        <button @click="change(item.name)">测试</button>
+      </div>
     </vue-golden-layout>
   </div>
 </template>
 <script>
-import Other from "./Other";
-import Assembly from './Assembly';
-import Another from './Another'
 
 export default {
-  components: { Other, Assembly, Another },
   name: "Row",
   data() {
     return {
-      node: '',
+      items: [],
+      activeName: '',
       // 配置
       config: {
-        mainNode: 'el-main',
+        mainNode: "el-main",
         settings: {
           selectionEnabled: true,
           popoutWholeStack: true,
+          showCloseIcon: false,
         },
         content: [
           {
-            type: "row",
+            type: "stack",
+            width: 50,
+            activeItemIndex: 0,
             content: [
               {
-                type: "stack",
-                width: 50,
-                activeItemIndex: 0,
-                content: [
-                  {
-                    type: "component",
-                    componentName: "ComponentA",
-                    componentState: { node: 'other' }
-                  },
-                  {
-                    type: "component",
-                    componentName: "ComponentB",
-                    componentState: { node: 'another' }
-                  },
-                ],
+                type: "component",
+                componentName: this.getForList(),
+                componentState: { key: 1 },
               },
               {
-                type: "column",
-                content: [
-                  {
-                    type: "component",
-                    componentName: "ComponentC",
-                    componentState: { node: 'assembly' }
-                  },
-                  {
-                    type: "component",
-                    componentName: "ComponentD",
-                    componentState: { node: 'other' }
-                  },
-                ],
+                type: "component",
+                componentName: 'ComponentTwo',
+                componentState: { key: 2 },
               },
-
+              {
+                type: "component",
+                componentName: 'com3',
+                componentState: {},
+              },
             ],
           },
         ],
       },
     };
   },
+  created() {
+    this.getForList()
+  },
+  methods: {
+    change() {
+      this.activeName = 'ComponentTwo'
+      this.$refs.vueGolden.changeSelectedName(this.activeName)
+    },
+    getForList() {
+      this.items = [{
+        id: 1,
+        name: '1'
+      }, {
+        id: 2,
+        name: '2'
+      }]
+      return 'ComponentOne'
+    },
+  }
 };
 </script>
 
@@ -76,5 +82,29 @@ export default {
 body,
 html {
   width: 100%;
+}
+
+
+.text {
+  font-size: 14px;
+  color: black
+}
+
+.item {
+  margin-bottom: 18px;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both
+}
+
+.box-card {
+  width: 480px;
 }
 </style>

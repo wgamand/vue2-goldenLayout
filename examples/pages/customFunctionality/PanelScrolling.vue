@@ -2,21 +2,27 @@
   <vue-golden-layout
   :config="config"
   :scroll="scroll"
-  :showTop="true"
   > 
-  <another></another>
+  <div v-for="item in items" :key="item.id">
+    <another></another>
+  </div>
   </vue-golden-layout>
 </template>
 
 <script>
-import Another from "../essentials/row/Another";
+import Another from "../../components/ItemVue/Another";
 export default {
   name: "PanelScrolling",
   components: { Another },
   data() {
     return {
       scroll: true,
-      config: {
+      items: [{id: 1}, {id: 2}]
+    };
+  },
+  computed: {
+    config() {
+      return {
         mainNode: 'el-main',
         content: [
           {
@@ -25,7 +31,7 @@ export default {
               {
                 type: "component",
                 componentName: "ComponentA",
-                componentState: { node: "another" },
+                componentState: { key: 1 },
               },
               {
                 type: "column",
@@ -37,15 +43,16 @@ export default {
                   {
                     type: "component",
                     componentName: "ComponentC",
+                    componentState: { key: 2 },
                   },
                 ],
               },
             ],
           },
         ],
-      },
-    };
-  },
+      }
+    }
+  }
 
 
 };

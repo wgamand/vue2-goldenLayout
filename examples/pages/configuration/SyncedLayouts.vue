@@ -3,9 +3,10 @@
     <vue-golden-layout
     :config="config"
     :synced="synced"
-    :showTop="true"
     >
-    <test-table></test-table>
+    <div v-for="item in items" :key="item.id">
+      <test-table></test-table>
+    </div>
     </vue-golden-layout>
   </div>
 </template>
@@ -19,6 +20,7 @@ export default {
     return {
       synced: true,
       wrapp: '',
+      items: [{id:1}, {id:2}, {id:3}, {id:4}],
       config: {
         mainNode: 'el-main',
         content: [{
@@ -29,13 +31,13 @@ export default {
             content: [{
               type: 'component',
               componentName: 'example1',
-              componentState: { node: 'test-table'},
+              componentState: { key: 1},
               title: 'Component 1'
             },
             {
               type: 'component',
               componentName: 'example2',
-              componentState: { node: 'test-table'},
+              componentState: { key: 2 },
               title: 'Component 2'
             }]
           },
@@ -44,12 +46,12 @@ export default {
             content: [{
               type: 'component',
               componentName: 'testComponent1',
-              componentState: { node: 'test-table'}
+              componentState: { key: 3}
             },
             {
               type: 'component',
               componentName: 'testComponent2',
-              componentState: { node: 'test-table'}
+              componentState: { key: 4}
             }]
           }
           ]

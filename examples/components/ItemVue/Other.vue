@@ -2,7 +2,7 @@
   <div ref="other" id="other">
     <h2>测试内容</h2>
     <table id="table">
-      <tr>
+      <tr id="tr">
         <td>1</td>
         <td>2</td>
         <td>3</td>
@@ -35,9 +35,8 @@ export default {
 
     transmit() {
       this.$bus.$on('transmit', (container, state) => {
-        if (!this.$refs.other || state.node !== 'other') return
+        if (!this.$refs.other || state.event !== 'other') return
         let otherCopy = this.$refs.other.cloneNode(true)
-
         container.getElement().append(otherCopy)
       })
 
@@ -51,6 +50,7 @@ table {
   width: 200px;
   text-align: center;
 }
+
 
 table td {
   border: powderblue 1px solid;

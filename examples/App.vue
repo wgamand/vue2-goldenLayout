@@ -5,6 +5,7 @@
         <v-sider></v-sider>
       </el-aside>
       <el-main id="layoutA">
+        <content-header></content-header>
         <router-view></router-view>
       </el-main>
 
@@ -17,14 +18,17 @@
 </template>
 
 <script>
-import VSider from "./components/VSider.vue";
+import VSider from "./components/VSider";
+import ContentHeader from "./components/ContentHeader"
 export default {
   name: "App",
   components: {
     VSider,
+    ContentHeader,
   },
   data() {
-    return {};
+    return {
+    };
   }
 };
 </script>
