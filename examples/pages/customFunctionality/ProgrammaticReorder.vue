@@ -19,7 +19,11 @@ export default {
       toggle: false,
       restore: true,
       config: {
-        mainNode: 'el-main',
+        settings: {
+          selectionEnabled: true,
+          popoutWholeStack: true,
+          showCloseIcon: false,
+        },
         type: 'column',
         content: [{
           type: 'column',
@@ -27,21 +31,25 @@ export default {
             {
               type: 'component',
               componentName: 'example1',
-              componentState: { text: 'Component 1' }
+              componentState: { text: 'Component 1' },
+              isClosable: false,
             },
             {
               type: 'component',
               componentName: 'example2',
-              componentState: { text: 'Component 2' }
+              componentState: { text: 'Component 2' },
+              isClosable: false,
             },
             {
               type: 'component',
               componentName: 'example3',
-              componentState: { text: 'Component 3' }
+              isClosable: false,
+              componentState: { text: 'Component 3' },
             }, {
               type: 'component',
               componentName: 'example4',
-              componentState: { text: 'Component 4' }
+              isClosable: false,
+              componentState: { text: 'Component 4' },
             }
           ]
         }]

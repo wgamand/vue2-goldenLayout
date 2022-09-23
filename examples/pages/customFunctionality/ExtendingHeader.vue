@@ -24,7 +24,6 @@ export default {
       spread: true,
       config: {
         settings: {},
-        mainNode: 'el-main',
         content: [{
           type: 'row',
           content: [{

@@ -26,13 +26,13 @@ export default {
       assem: [{id: 1}, {id: 3}],
       num: 3,
       config: {
-        mainNode: 'el-main',
         settings: {
           selectionEnabled: true,
           popoutWholeStack: true,
         },
         content: [{
           type: 'row',
+          isClosable: false,
           content: [{
             type: 'stack',
             content: [{

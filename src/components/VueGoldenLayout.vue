@@ -1,5 +1,5 @@
 <template>
-  <div id="gl-main" v-show="false">
+  <div v-show="false">
     <slot></slot>
   </div>
 </template>
@@ -12,6 +12,29 @@ export default {
   props: {
     config: {
       required: false,
+      default: function () {
+        return {
+        settings: {
+          selectionEnabled: true,
+          showMaximiseIcon: false,
+          showPopoutIcon: false,
+          showCloseIcon: false,
+        },
+        content: [
+          {
+            type: 'stack',
+            isClosable: false,
+            content: [
+              {
+                type: 'component',
+                componentName: '文件路径：-',
+                isClosable: false,
+              },
+            ],
+          },
+        ],
+      }
+      }
     },
     scroll: {
       required: false,
@@ -36,10 +59,14 @@ export default {
     },
     mainNode: {
       required: false,
+      default: "el-main"
     },
     handlePopIcon: {
       required: false,
     },
+    close: {
+      required: false,
+    }
   },
   data() {
     return {
@@ -97,13 +124,14 @@ export default {
     },
     // 创建布局组件实例
     createComInstance(config) {
-      let node = config.mainNode;
+      let node = this.mainNode;
       let nodeBody = (this.nodebody = node
         ? document.getElementsByClassName([node])
         : "");
       let layout = nodeBody
         ? new GoldenLayout(config, nodeBody)
         : new GoldenLayout(config);
+        this.layout = layout;
       return layout;
     },
     // 创建新布局
@@ -135,7 +163,7 @@ export default {
       //运行方法
       this.css ? this.configuredCss(layout) : "";
       this.spread ? this.extendingHeader(layout) : "";
-      this.conditionalClosing(layout);
+      this.close ? this.conditionalClosing(layout) : '';
 
       let onresize = function () {
         layout.updateSize();
@@ -181,15 +209,19 @@ export default {
       let differChar = addLayout._components[newComName];
 
       if (!differChar) {
+   
         addLayout.registerComponent(newComName, (container, state) => {
           this.transferItemCom(container, state);
         });
+        if(!addLayout.root.contentItems.length) {
+
+        }
         addLayout.root.contentItems[0].addChild(newItem);
       } else {
         addLayout.root.contentItems[0].addChild(newItem);
       }
 
-      if (delName) {
+      if (delName = '文件路径：-') {
         let filterFunction = (item) => item.componentName === delName;
         let stacks = addLayout.root.contentItems[0].getItemsByType("stack");
         if (stacks.length) {

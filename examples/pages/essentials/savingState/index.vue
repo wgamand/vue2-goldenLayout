@@ -19,7 +19,6 @@ export default {
       saving: true,
       items: [{id:1}, {id:3}],
       config: {
-        mainNode: 'el-main',
         content: [
           {
             type: 'row',

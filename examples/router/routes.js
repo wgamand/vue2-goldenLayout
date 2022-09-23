@@ -42,6 +42,10 @@ export const routes = [
   {
     path: '/conditional-closing',
     component: () => import('../pages/customFunctionality/ConditionalClosing')
+  },
+  {
+    path: '/data-table-presentation',
+    component: () => import('../pages/configuration/DataTablePresentation')
   }
 
 ]

@@ -23,7 +23,6 @@ export default {
       activeName: '',
       // 配置
       config: {
-        mainNode: "el-main",
         settings: {
           selectionEnabled: true,
           popoutWholeStack: true,

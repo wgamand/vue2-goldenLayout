@@ -22,7 +22,6 @@ export default {
       wrapp: '',
       items: [{id:1}, {id:2}, {id:3}, {id:4}],
       config: {
-        mainNode: 'el-main',
         content: [{
           type: 'row',
           content: [{

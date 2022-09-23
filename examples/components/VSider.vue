@@ -14,6 +14,8 @@
       </el-menu-item-group>
       <el-menu-item-group title="CONFIGURATION">
         <el-menu-item index="synced-layouts">Synced-layouts</el-menu-item>
+        <el-menu-item index="data-table-presentation">DataTablePresentation</el-menu-item>
+        
       </el-menu-item-group>
       <el-menu-item-group title="ADDING ITEMS">
         <el-menu-item index="to-element">To-element</el-menu-item>

@@ -14,7 +14,6 @@ export default {
     return {
       css: true,
       config: {
-        mainNode: 'el-main',
         content: [
           {
             type: 'row',

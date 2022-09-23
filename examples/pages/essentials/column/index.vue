@@ -8,7 +8,6 @@ export default {
   data() {
     return {
       config: {
-        mainNode: "el-main",
         content: [
           {
             type: "column",

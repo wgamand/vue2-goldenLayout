@@ -41,7 +41,6 @@ export default {
   computed: {
     config() {
       return {
-        mainNode: "el-main",
         content: [
           {
             type: "row",
