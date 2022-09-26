@@ -88,10 +88,11 @@
  
   "repository": {
     "type": "git",
-    "url": "https://github.com/wgamand/vue2-goldenLayout1"
+    "url": "https://github.com/wgamand/vue2-goldenLayout.git"
   },
+  "homepage": "https://github.com/wgamand/vue2-goldenLayout",
   "author": "zhaoaijing",
   "bugs": {
-    "url": "https://github.com/wgamand/vue2-goldenLayout1/issues"
+    "url": "https://github.com/wgamand/vue2-goldenLayout/issues"
   }
 }

@@ -22,7 +22,7 @@ export default {
         },
         content: [
           {
-            type: 'stack',
+            type: 'row',
             isClosable: false,
             content: [
               {
