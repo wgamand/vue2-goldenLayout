@@ -11,12 +11,6 @@ Vue.component('vue-golden-layout', VueGoldenLayout)
 
 Vue.use(ElementUI);
 
-import VueCloneya from 'vue-cloneya'
-Vue.use(VueCloneya)
-
-// import VueClone from '@/js/clone.js'
-// Vue.use(VueClone)
-
 Vue.config.productionTip = false
 new Vue({
   beforeCreate() {
