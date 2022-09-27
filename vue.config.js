@@ -2,7 +2,7 @@ module.exports = {
   // 是否触发eslint检查
   lintOnSave: false,
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
-  outputDir:'dist',
+  outputDir:'docs',
   productionSourceMap: false,
   pages: {
     index: {
