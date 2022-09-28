@@ -15,7 +15,7 @@ npm run dev
 
 示例在/examples文件夹
 
-## 使用配置
+## 使用及依赖
 
 ```javascript
 import VueGoldenLayout from 'vue2-golden-layout'

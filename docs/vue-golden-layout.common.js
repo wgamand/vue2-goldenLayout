@@ -10976,6 +10976,13 @@ return jQuery;
 
 /***/ }),
 
+/***/ "52f3":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "8875":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16403,6 +16410,13 @@ lm.utils.copy( lm.utils.ReactComponentHandler.prototype, {
 
 /***/ }),
 
+/***/ "f3cf":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "fb15":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -17070,7 +17084,15 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var VueGoldenLayout = (component.exports);
+// EXTERNAL MODULE: ./node_modules/golden-layout/src/css/goldenlayout-base.css
+var goldenlayout_base = __webpack_require__("f3cf");
+
+// EXTERNAL MODULE: ./node_modules/golden-layout/src/css/goldenlayout-dark-theme.css
+var goldenlayout_dark_theme = __webpack_require__("52f3");
+
 // CONCATENATED MODULE: ./src/index.js
+
+
 
 /* harmony default export */ var src_0 = ({
   install: function install(Vue) {
