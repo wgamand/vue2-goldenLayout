@@ -15,7 +15,7 @@ npm run dev
 
 示例在/examples文件夹
 
-## 使用
+## 使用配置
 
 ```javascript
 import VueGoldenLayout from 'vue2-golden-layout'
@@ -33,11 +33,11 @@ import 'golden-layout/src/css/goldenlayout-light-theme.css'
 ```
 默认配置的布局是堆栈
 
-## 结构
-分别有 row、column、stack三种，行\列\堆栈。
-
-### 配置
+## 布局组件自定义配置
 创建布局组件需要配置相应数据，包括布局类型、组件名称等。
+
+### 结构
+分别有 row、column、stack三种，行\列\堆栈。
 
 ```html
 config = {
@@ -63,7 +63,7 @@ config = {
 }
 ```
 
-## 如需使用其他功能，需使用props 传递相应的标识使用相应功能
+### 如需使用其他功能，需使用props 传递相应的标识使用相应功能
  - scroll: 给布局添加滚动条
  - saving: 将布局保存在localStorage中
  - css: 给布局添加背景颜色
@@ -72,6 +72,8 @@ config = {
  - spread: 切换布局样式
  - mainNode: 布局位置父组件的类名
  - close: 关闭布局组件提示
+
+### 布局组件内容
 
 给布局组件添加DOM作为内容，需要创建存放子组件数据的循环数组
 
