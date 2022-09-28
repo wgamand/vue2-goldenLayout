@@ -39,8 +39,13 @@ import 'golden-layout/src/css/goldenlayout-light-theme.css'
 ### 结构
 分别有 row、column、stack三种，行\列\堆栈。
 
+### 配置 config
 ```html
 config = {
+  settings: {
+    selectionEnabled: true,  // 可通过点击选择布局项目
+    showCloseIcon: false,    // 不显示关闭图标
+  },
   content: [  //每个项目（组件除外）都可以有子项，在数组中指定content
     {
       type: "column",
@@ -48,7 +53,7 @@ config = {
         {
           type: "component",
           title: 'example1',  //项目在其选项卡和弹出窗口中显示的标题 （title可不设，默认标题为componentName）
-          componentName: "example",  //指定应创建哪个组件。更多关于此的信息
+          componentName: "example",  //指定应创建哪个组件
           componentState: { text: "Component 1" }, //可以是任何可序列化的对象，并将传递给组件
         },
         {
@@ -71,7 +76,7 @@ config = {
  - newElement: 添加的新布局配置
  - spread: 切换布局样式
  - mainNode: 布局位置父组件的类名
- - close: 关闭布局组件提示
+ - close: 自定义关闭组件
 
 ### 布局组件内容
 
@@ -85,7 +90,7 @@ config = {
 </vue-golden-layout>
 
 ```
-
+### 添加布局组件
 添加新布局组件时，需要配置新布局的组件名及内容，监听add()方法将新的配置项添加至页面。
 ```javascript
 
@@ -97,8 +102,8 @@ config = {
   this.$refs.goldenLayout.add(newItem)
 
 ```
-
-自定义关闭布局组件，可用 getCloseItem() 监听自定义事件
+### 自定义关闭布局组件
+关闭布局组件时，可用 getCloseItem() 监听自定义事件。
 
 ```javascript
   getCloseItem(tab, layout) 
@@ -106,14 +111,14 @@ config = {
   layout: 整个布局的layout实例化组件；
 ```
 
-
+### 自定义弹出布局组件
 自定义激活指定布局组件项，可用 changeSelectedName() 监听自定义事件。
 
 ```javascript
   this.$refs.goldenLayout.changeSelectedName(组件名)
 ```
 
-
+### 其他config 配置设置可对照官方文档进行配置，更多功能也可查看官方网站<a href="http://golden-layout.com"></a>示例学习。
 
 
  
