@@ -6,15 +6,6 @@
 ```sh
 npm i -S vue2-golden-layout
 ```
-
-### Fast example
-
-```html
-<vue-golden-layout mainNode="body"></vue-golden-layout>
-```
-
-Note: 默认布局是堆栈
-
 ### 示例
 
 ```sh
@@ -37,11 +28,16 @@ import 'golden-layout/src/css/goldenlayout-base.css'
 import 'golden-layout/src/css/goldenlayout-light-theme.css'
 ```
 
+```html
+<vue-golden-layout></vue-golden-layout>
+```
+默认配置的布局是堆栈
+
 ## 结构
 分别有 row、column、stack三种，行\列\堆栈。
 
 ### 配置
-可以自定义布局
+创建布局组件需要配置相应数据，包括布局类型、组件名称等。
 
 ```html
 config = {
@@ -64,19 +60,56 @@ config = {
       ]
     }
   ]
-      }
+}
 ```
 
-## 利用props 给 <vue-golden-layout></vue-golden-layout> 传递相应的标识使用相应功能
- scroll: 给布局添加滚动条
-  saving: 将布局保存在localStorage中
-  css: 给布局添加背景颜色
-  reorder: 布局重新排序
-  newElement: 添加的新布局配置
-  spread: 切换布局样式
-  mainNode: 布局位置父组件的类名
-  close: 关闭布局组件提示
+## 如需使用其他功能，需使用props 传递相应的标识使用相应功能
+ >scroll: 给布局添加滚动条
+ >saving: 将布局保存在localStorage中
+ >css: 给布局添加背景颜色
+ >reorder: 布局重新排序
+ >newElement: 添加的新布局配置
+ >spread: 切换布局样式
+ >mainNode: 布局位置父组件的类名
+ >close: 关闭布局组件提示
 
+给布局组件添加DOM作为内容，需要添加循环子数组
+
+```html
+<vue-golden-layout ref="goldenLayout" mainNode="main">
+      <div v-for="item in allItems" :key="item.id">
+        <span>{{item.address}}</span>
+      </div>
+</vue-golden-layout>
+
+```
+
+添加新组件时，需要新的组件配置项
+```javascript
+
+  var newItem = {
+    type: 'component',
+    componentName: "componentName",
+    componentState: { key: data.id }  //key: 作为匹配循环子组件的id,将子组件放入相应的布局组件内容中
+  }
+  this.$refs.goldenLayout.add(newItem)
+
+```
+
+自定义关闭布局组件，可用 getCloseItem 监听自定义事件
+
+```javascript
+  getCloseItem(tab, layout) 
+  tab: 当前删除的布局组件；
+  layout: 整个布局的layout实例化组件；
+```
+
+
+自定义激活指定布局组件项，可用 changeSelectedName 监听自定义事件。
+
+```javascript
+  this.$refs.goldenLayout.changeSelectedName(组件名)
+```
 
 
 
