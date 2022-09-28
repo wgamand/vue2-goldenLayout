@@ -64,16 +64,16 @@ config = {
 ```
 
 ## 如需使用其他功能，需使用props 传递相应的标识使用相应功能
- >scroll: 给布局添加滚动条
- >saving: 将布局保存在localStorage中
- >css: 给布局添加背景颜色
- >reorder: 布局重新排序
- >newElement: 添加的新布局配置
- >spread: 切换布局样式
- >mainNode: 布局位置父组件的类名
- >close: 关闭布局组件提示
+ - scroll: 给布局添加滚动条
+ - saving: 将布局保存在localStorage中
+ - css: 给布局添加背景颜色
+ - reorder: 布局重新排序
+ - newElement: 添加的新布局配置
+ - spread: 切换布局样式
+ - mainNode: 布局位置父组件的类名
+ - close: 关闭布局组件提示
 
-给布局组件添加DOM作为内容，需要添加循环子数组
+给布局组件添加DOM作为内容，需要创建存放子组件数据的循环数组
 
 ```html
 <vue-golden-layout ref="goldenLayout" mainNode="main">
@@ -84,10 +84,10 @@ config = {
 
 ```
 
-添加新组件时，需要新的组件配置项
+添加新布局组件时，需要配置新布局的组件名及内容，监听add()方法将新的配置项添加至页面。
 ```javascript
 
-  var newItem = {
+  var newItem = {  //新布局配置
     type: 'component',
     componentName: "componentName",
     componentState: { key: data.id }  //key: 作为匹配循环子组件的id,将子组件放入相应的布局组件内容中
@@ -96,7 +96,7 @@ config = {
 
 ```
 
-自定义关闭布局组件，可用 getCloseItem 监听自定义事件
+自定义关闭布局组件，可用 getCloseItem() 监听自定义事件
 
 ```javascript
   getCloseItem(tab, layout) 
@@ -105,7 +105,7 @@ config = {
 ```
 
 
-自定义激活指定布局组件项，可用 changeSelectedName 监听自定义事件。
+自定义激活指定布局组件项，可用 changeSelectedName() 监听自定义事件。
 
 ```javascript
   this.$refs.goldenLayout.changeSelectedName(组件名)
