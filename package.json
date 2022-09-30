@@ -1,6 +1,6 @@
 {
   "name": "vue2-golden-layout",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -63,11 +63,10 @@
     ]
   },
   "files": [
-    "dist/*",
+    "docs/*",
     "src/*",
     "assets/*",
     "examples/*",
-    "*.json",
     "*.js"
   ],
   "keywords": [

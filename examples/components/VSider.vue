@@ -13,7 +13,7 @@
         <el-menu-item index="saving-state">saving-state</el-menu-item>
       </el-menu-item-group>
       <el-menu-item-group title="CONFIGURATION">
-        <el-menu-item index="synced-layouts">Synced-layouts</el-menu-item>
+        <!-- <el-menu-item index="synced-layouts">Synced-layouts</el-menu-item> -->
         <el-menu-item index="data-table-presentation">DataTablePresentation</el-menu-item>
         
       </el-menu-item-group>

@@ -46,8 +46,7 @@ export const routes = [
   {
     path: '/data-table-presentation',
     component: () => import('../pages/configuration/DataTablePresentation')
-  }
-
+  },
 ]
 
 export default routes

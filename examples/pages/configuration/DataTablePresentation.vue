@@ -13,7 +13,11 @@
     </div>
     <vue-golden-layout ref="vueGolden" @closeItem="getCloseItem" close="true" mainNode="main">
       <div v-for="item in allItems" :key="item.id">
-        <span>{{item.address}}</span>
+        <div>
+           <p>姓名：{{item.name}}</p>
+           <p>地址：{{item.address}}</p>
+        </div>
+        
       </div>
     </vue-golden-layout>
   </div>
@@ -31,19 +35,19 @@ export default {
         address: '上海市普陀区金沙江路 1518 弄'
       }, {
         id: 2,
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
+        date: '2017-05-04',
+        name: '张三',
+        address: '广州市普陀区金沙江路 1517 弄'
       }, {
         id: 3,
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
+        date: '2018-05-01',
+        name: '李四',
+        address: '青海市普陀区金沙江路 1519 弄'
       }, {
         id: 4,
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
+        date: '2019-05-03',
+        name: '王五',
+        address: '长沙市普陀区金沙江路 1516 弄'
       }],
       noData: false,
     }
