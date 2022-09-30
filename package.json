@@ -1,6 +1,6 @@
 {
   "name": "vue2-golden-layout",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -13,12 +13,10 @@
   },
   "main": "dist/vue-golden-layout.common.js",
   "dependencies": {
-    "core-js": "^3.6.5",
     "element-ui": "^2.15.6",
     "golden-layout": "1.5.9",
     "jquery": "^3.6.0",
     "vue": "^2.6.11",
-    "vue-cloneya": "^1.0.14",
     "vue-router": "^3.5.3",
     "vue-splitpane": "^1.0.6"
   },
@@ -82,7 +80,6 @@
     "example": "examples",
     "test": "tests"
   },
- 
   "repository": {
     "type": "git",
     "url": "https://github.com/wgamand/vue2-goldenLayout.git"
